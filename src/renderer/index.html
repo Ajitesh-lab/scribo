@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scribo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="dictation-pill" id="liveIndicator" data-state="idle">
+        <div class="record-button" aria-hidden="true">
+          <span class="record-button__halo record-button__halo--outer"></span>
+          <span class="record-button__halo record-button__halo--inner"></span>
+          <svg class="record-button__icon" viewBox="0 0 24 24">
+            <path
+              d="M12 15.25a3.75 3.75 0 0 0 3.75-3.75V7.25a3.75 3.75 0 1 0-7.5 0v4.25A3.75 3.75 0 0 0 12 15.25Z"
+              fill="currentColor"
+            />
+            <path
+              d="M6.5 11.5a.75.75 0 0 1 .75.75 4.75 4.75 0 0 0 9.5 0 .75.75 0 0 1 1.5 0 6.26 6.26 0 0 1-5.5 6.21v2.04h2.25a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5h2.25v-2.04a6.26 6.26 0 0 1-5.5-6.21.75.75 0 0 1 .75-.75Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+
+        <div class="recording-badge" aria-live="polite">
+          <span class="status-orb" aria-hidden="true">
+            <span class="status-orb__ping"></span>
+            <span class="status-orb__core"></span>
+          </span>
+          <span id="statusText" class="recording-label"></span>
+        </div>
+      </section>
+    </main>
+
+    <script src="./pill.js"></script>
+  </body>
+</html>

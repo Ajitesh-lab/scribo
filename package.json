@@ -1,0 +1,23 @@
+{
+  "name": "scribo",
+  "version": "0.1.0",
+  "description": "macOS-first dictation MVP inspired by Wispr Flow",
+  "main": "src/main.js",
+  "scripts": {
+    "build:control-listener": "sh ./scripts/build-control-listener.sh",
+    "start": "sh ./scripts/build-control-listener.sh && env -u ELECTRON_RUN_AS_NODE electron .",
+    "dev": "sh ./scripts/build-control-listener.sh && env -u ELECTRON_RUN_AS_NODE electron .",
+    "package:mac": "sh ./scripts/build-control-listener.sh && electron-packager . Scribo --platform=darwin --arch=arm64 --out=dist --overwrite --extra-resource=build/bin/control-listener --app-bundle-id=com.scribo.app --ignore='^/\\\\.env$' --ignore='^/\\\\.env\\\\..*$'",
+    "package:dmg": "npm run package:mac && sh ./scripts/build-dmg.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "@electron/packager": "^19.1.0",
+    "electron": "^41.1.1"
+  }
+}

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scribo Workspace</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Scribo</p>
+          <h1>Workspace</h1>
+          <p class="subhead">
+            The floating pill stays on-screen even when this window is minimized.
+          </p>
+        </div>
+
+        <div class="live-card" id="liveIndicator" data-state="idle">
+          <div class="live-card__row">
+            <div class="live-card__status">
+              <span class="status-orb" aria-hidden="true">
+                <span class="status-orb__ping"></span>
+                <span class="status-orb__core"></span>
+              </span>
+              <span id="statusText" class="status-text">Idle</span>
+            </div>
+            <span id="statusPill" class="status-pill">Ready</span>
+          </div>
+
+          <p id="liveText" class="live-text">Ready for dictation.</p>
+
+          <div class="live-card__meta">
+            <span id="recordSource" class="meta-chip">Standby</span>
+            <span id="recordTimer" class="meta-chip meta-chip--mono">00:00</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <button id="recordButton" class="record-button" type="button">
+          <span class="record-button__label">Hold To Talk</span>
+          <span class="record-button__hint" id="recordHint">Hold the button or press and hold Ctrl from any app.</span>
+        </button>
+
+        <div class="shortcut-grid">
+          <div class="shortcut-item">
+            <span class="shortcut-label">Push To Talk</span>
+            <code id="pushToTalkKey">Ctrl</code>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-label">Quick Toggle</span>
+            <code id="recordShortcut">CommandOrControl+Shift+Space</code>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-label">Insert</span>
+            <code id="insertShortcut">CommandOrControl+Shift+Enter</code>
+          </div>
+        </div>
+      </section>
+
+      <p id="messageText" class="message">
+        Scribo automatically pastes the cleaned draft back into the last app you were using.
+      </p>
+
+      <section class="settings-panel" aria-labelledby="settingsTitle">
+        <div class="settings-panel__copy">
+          <p class="eyebrow">Settings</p>
+          <h2 id="settingsTitle">API And Tone</h2>
+          <p class="settings-panel__subhead">
+            Add your own Groq API key, choose a refinement tone, and save special words Scribo should recognize.
+          </p>
+        </div>
+
+        <form id="settingsForm" class="settings-form">
+          <label class="field">
+            <span class="field__label">Groq API Key</span>
+            <div class="field__control">
+              <input
+                id="apiKeyInput"
+                class="field__input"
+                type="password"
+                spellcheck="false"
+                autocomplete="off"
+                placeholder="gsk_..."
+              />
+              <button id="toggleApiKeyButton" class="field__button" type="button" aria-label="Show API key">
+                Show
+              </button>
+            </div>
+            <span id="apiKeyHint" class="field__hint">
+              Saved locally on this Mac. Scribo uses this key for transcription and cleanup.
+            </span>
+          </label>
+
+          <div class="field">
+            <span class="field__label">Tone</span>
+            <div class="tone-toggle" role="group" aria-label="Refinement tone">
+              <button class="tone-toggle__option" type="button" data-tone="professional">Professional</button>
+              <button class="tone-toggle__option" type="button" data-tone="casual">Casual</button>
+            </div>
+            <span class="field__hint">
+              Professional keeps punctuation tighter. Casual keeps the phrasing looser. Both stay close to the raw dictation.
+            </span>
+          </div>
+
+          <section class="field field--dictionary" id="customDictionaryField">
+            <div class="field__header">
+              <div class="field__header-copy">
+                <span class="field__label">Custom Dictionary</span>
+                <span class="field__beta">Beta</span>
+              </div>
+
+              <label class="toggle" for="customDictionaryToggle">
+                <input id="customDictionaryToggle" class="toggle__input" type="checkbox" />
+                <span class="toggle__track" aria-hidden="true">
+                  <span class="toggle__thumb"></span>
+                </span>
+                <span class="toggle__text" id="customDictionaryToggleText">Off</span>
+              </label>
+            </div>
+
+            <div id="customDictionaryPanel" class="field__panel" hidden>
+              <textarea
+                id="customDictionaryInput"
+                class="field__textarea"
+                spellcheck="false"
+              ></textarea>
+              <span id="customDictionaryHint" class="field__hint">
+                Add one word or phrase per line. Scribo will use them as spelling hints during transcription and cleanup.
+              </span>
+            </div>
+          </section>
+
+          <div class="settings-form__actions">
+            <button id="saveSettingsButton" class="settings-save" type="submit">Save Settings</button>
+            <span id="settingsStatus" class="settings-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </section>
+
+      <section class="hidden-state" aria-hidden="true">
+        <textarea id="rawOutput" spellcheck="false"></textarea>
+        <textarea id="cleanOutput" spellcheck="true"></textarea>
+        <button id="copyButton" type="button">Copy</button>
+        <button id="clearButton" type="button">Clear</button>
+        <button id="insertButton" type="button">Insert</button>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
