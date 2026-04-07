@@ -95,3 +95,5 @@ The generated DMG is written to:
 - `src/services/dictation.js`: Groq transcription and refinement pipeline
 - `native/control_listener.swift`: macOS helper for global Ctrl detection
 - `scripts/`: packaging and helper build scripts
+
+Took 1 day didn't code anything by myslf :)
