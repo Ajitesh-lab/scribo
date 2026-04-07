@@ -32,6 +32,20 @@ npm start
 
 Then open the main window, enter your own Groq API key, and save settings.
 
+## Downloading From GitHub
+
+If someone just wants the app and not the source code:
+
+1. Open the repo on GitHub.
+2. Click `Releases` on the right side of the page.
+3. Open the latest release.
+4. Download `Scribo.dmg`.
+5. Open the DMG on a Mac and drag `Scribo.app` into `Applications`.
+
+Direct release page:
+
+`https://github.com/Ajitesh-lab/scribo/releases`
+
 ## Permissions
 
 Scribo needs these macOS permissions to work properly:

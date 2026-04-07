@@ -291,6 +291,10 @@ code {
   gap: 14px;
 }
 
+.field--dictionary[data-enabled="false"] {
+  gap: 0;
+}
+
 .field__header {
   display: flex;
   align-items: center;
@@ -335,6 +339,10 @@ code {
 .field__panel {
   display: grid;
   gap: 10px;
+}
+
+.field__panel[hidden] {
+  display: none;
 }
 
 .field__input {
